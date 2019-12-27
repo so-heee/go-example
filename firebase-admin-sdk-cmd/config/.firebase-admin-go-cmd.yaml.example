@@ -1,0 +1,4 @@
+firebase:
+  credentials: "./XXXXX.json"
+
+debug: false
