@@ -1,6 +1,6 @@
 FROM golang:latest AS build
 
-WORKDIR /go/src/github.com/so-heee/golang_echo_example/api
+WORKDIR /go/src/github.com/so-heee/golang-example/golang-clean-architecture/api
 ENV GO111MODULE=on
 COPY ./api/go.mod .
 COPY ./api/go.sum .
