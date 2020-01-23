@@ -1,0 +1,75 @@
+.PHONY: task1
+task1:
+	echo "task1実行"
+
+# 実行したコマンドを非表示
+.PHONY: task2
+task2:
+	@echo "task2実行"
+
+# 複数コマンド
+.PHONY: task3
+task3:
+	echo "task3-1実行"
+	echo "task3-2実行"
+
+# 複数コマンドをワンライナー
+.PHONY: task4
+task4:
+	echo "task4-1実行" && echo "task4-2実行"
+
+.PHONY: task5
+task5:
+	echo "task5-1実行" ; echo "task5-2実行" ;\
+	echo "task5-3実行"
+
+# タスクの前に別のタスクを実行
+.PHONY: task6
+task6: task1 task2
+	echo "task6実行"
+
+# 自身のMakefileに定義してある別のタスク定義を実行
+.PHONY: task7
+task7:
+	$(MAKE) task1
+	echo "task7実行"
+
+# 変数名=値
+VAR8=hello make
+
+.PHONY: task8
+task8:
+	echo $(VAR8)
+
+# shell commandの結果を変数に格納
+NOW9=$(shell date)
+.PHONY: task9
+task9:
+	echo $(NOW9)
+
+# シェルスクリプト変数・環境変数は$$で参照
+.PHONY: task10
+task10:
+	VAR10=$$GOPATH && echo $$VAR10
+
+# タスク実行中に環境変数を書き換えたい場合は、コマンド実行が1行終わるごとに環境変数がmakeコマンド実行時に戻る
+.PHONY: task11
+task11:
+	export VAR="この値は消えてしまいます"
+	echo VAR=$${VAR}
+
+.PHONY: task12
+task12:
+	export VAR="この値は残ります" ;\
+	echo VAR=$${VAR}
+
+# サブディレクトリのMakefileのタスクを実行する
+.PHONY: task13
+task13:
+	make -C pkg/hello sub_task
+
+# make実行時に変数の値を渡す
+.PHONY: task14
+VAR14="これは上書きされる"
+task14:
+	echo $(VAR14) $$VAR14
