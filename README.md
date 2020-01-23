@@ -10,3 +10,4 @@
 - gin
 - echo
 - gorm
+- golang-clean-architecture
