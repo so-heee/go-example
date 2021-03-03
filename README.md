@@ -1,4 +1,4 @@
-# golang-example
+# go-example
 
 - hello-world
 - cobra
