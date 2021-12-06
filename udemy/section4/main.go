@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 //型
@@ -92,4 +93,93 @@ func main() {
 	fmt.Println(`"`)
 
 	fmt.Println(string(s[0]))
+
+	//byte(uint8)型
+	byteA := []byte{72, 73}
+	fmt.Println(byteA)
+	fmt.Println(string(byteA))
+
+	c := []byte("HI")
+	fmt.Println(c)
+	fmt.Println(string(c))
+
+	//配列型
+	//後からサイズの変更ができない
+	var arr1 [3]int
+	fmt.Println(arr1)
+	fmt.Printf("%T\n", arr1)
+
+	var arr2 [3]string = [3]string{"A", "B"}
+	fmt.Println(arr2)
+
+	arr3 := [3]int{1, 2, 3}
+	fmt.Println(arr3)
+
+	//中身から要素数を決める
+	arr4 := [...]string{"C", "D"}
+	fmt.Println(arr4)
+	fmt.Printf("%T\n", arr4)
+
+	fmt.Println(arr2[0])
+	fmt.Println(arr2[1])
+	fmt.Println(arr2[2])
+	fmt.Println(arr2[2-1])
+
+	arr2[2] = "C"
+	fmt.Println(arr2)
+	fmt.Println(len(arr1))
+
+	//interface型
+	var x interface{}
+	fmt.Println(x)
+
+	x = 1
+	fmt.Println(x)
+	// 計算などはできない
+	// fmt.Println(x + 1)
+	x = 3.14
+	fmt.Println(x)
+	x = "A"
+	fmt.Println(x)
+	x = [3]int{1, 2, 3}
+	fmt.Println(x)
+
+	//型変換
+	var i3 int = 1
+	fl642 := float64(i3)
+
+	fmt.Println(fl642)
+	fmt.Printf("i3 = %T\n", i3)
+	fmt.Printf("fl642 = %T\n", fl642)
+
+	i4 := int(fl642)
+	fmt.Printf("i4 = %T\n", i4)
+
+	fl643 := 10.5
+	//小数点以下を切り捨て
+	i5 := int(fl643)
+	fmt.Printf("i5 = %T\n", i5)
+	fmt.Println(i5)
+
+	var s2 string = "100"
+	fmt.Printf("s2 = %T\n", s2)
+
+	i6, err := strconv.Atoi(s2)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(i6)
+	fmt.Printf("i6 = %T\n", i6)
+
+	var i7 int = 200
+	s3 := strconv.Itoa(i7)
+	fmt.Println(s3)
+	fmt.Printf("s3 = %T\n", s3)
+
+	var s4 string = "Hello World"
+	b := []byte(s4)
+	fmt.Println(b)
+
+	s5 := string(b)
+	fmt.Println(s5)
 }
