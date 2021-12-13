@@ -5,6 +5,15 @@ import (
 	"strconv"
 )
 
+func anything(a interface{}) {
+	switch v := a.(type) {
+	case string:
+		fmt.Println(v + "!?")
+	case int:
+		fmt.Println(v + 100000)
+	}
+}
+
 func main() {
 	//if
 	//条件分岐
@@ -34,4 +43,108 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Printf("i = %T\n", i)
+
+	//for
+	for {
+		i++
+		if i == 3 {
+			break
+		}
+		fmt.Println("Loop")
+	}
+
+	point := 0
+	for point < 10 {
+		fmt.Println(point)
+		point++
+	}
+
+	for i := 0; i < 10; i++ {
+		if i == 3 {
+			continue
+		}
+		if i == 6 {
+			break
+		}
+		fmt.Println(i)
+	}
+
+	arr := [3]int{1, 2, 3}
+	for i := 0; i < len(arr); i++ {
+		fmt.Println(arr[i])
+	}
+
+	for k, v := range arr {
+		fmt.Println(k, v)
+	}
+
+	sl := []string{"Python", "PHP", "GO"}
+	for _, v := range sl {
+		fmt.Println(v)
+	}
+
+	m := map[string]int{"apple": 100, "banana": 200}
+	for k, v := range m {
+		fmt.Println(k, v)
+	}
+
+	//switch
+	n := 6
+	switch n {
+	case 1, 2:
+		fmt.Println("1 or 2")
+	case 3, 4:
+		fmt.Println("3 or 4")
+	default:
+		fmt.Println("i don't know")
+	}
+
+	switch n2 := 2; n2 {
+	case 1, 2:
+		fmt.Println("1 or 2")
+	case 3, 4:
+		fmt.Println("3 or 4")
+	default:
+		fmt.Println("i don't know")
+	}
+
+	n3 := 6
+	switch {
+	case n3 > 0 && n < 4:
+		fmt.Println("0 < n < 4")
+	case n3 > 3 && n < 7:
+		fmt.Println("3 < n < 7")
+	default:
+		fmt.Println("i don't know")
+	}
+
+	//型switch
+	anything("aaa")
+	anything(1)
+
+	var x2 interface{} = 3
+	i3 := x2.(int) //最初に定義した型以外にはスイッチできない
+	fmt.Println(i3 + 2)
+
+	f, isFloat64 := x2.(float64)
+	fmt.Println(f, isFloat64)
+
+	if x2 == nil {
+		fmt.Println("None")
+	} else if i, isInt := x2.(int); isInt {
+		fmt.Println(i, "x2 is Int")
+	} else if s, isString := x2.(string); isString {
+		fmt.Println(s, isString)
+	} else {
+		fmt.Println("i don't know")
+	}
+
+	switch x2.(type) { // 該当の値を使用する場合は v := x2.(type)のようにする
+	case int:
+		fmt.Println("int")
+	case string:
+		fmt.Println("string")
+	default:
+		fmt.Println("i don't know")
+	}
 }
