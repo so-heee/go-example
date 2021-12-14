@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
+	"time"
 )
 
 func anything(a interface{}) {
@@ -12,6 +14,28 @@ func anything(a interface{}) {
 	case int:
 		fmt.Println(v + 100000)
 	}
+}
+
+func TestDefer() {
+	defer fmt.Println("END")
+	fmt.Println("START")
+}
+
+func RunDefer() {
+	defer fmt.Println("1")
+	defer fmt.Println("2")
+	defer fmt.Println("3")
+}
+
+func sub() {
+	for {
+		fmt.Println("Sub Loop")
+		time.Sleep(100 * time.Millisecond)
+	}
+}
+
+func init() {
+	fmt.Println("init")
 }
 
 func main() {
@@ -147,4 +171,56 @@ func main() {
 	default:
 		fmt.Println("i don't know")
 	}
+
+	//ラベル付きfor
+Loop:
+	for {
+		for {
+			for {
+				fmt.Println("START")
+				break Loop
+			}
+			fmt.Println("処理をしない")
+		}
+		fmt.Println("処理をしない")
+	}
+	fmt.Println("END")
+
+Loop2:
+	for i := 0; i < 3; i++ {
+		for j := 1; j < 3; j++ {
+			if j > 1 {
+				continue Loop2
+			}
+			fmt.Println(i, j, i*j)
+		}
+		fmt.Println("処理をしない")
+	}
+
+	//defer
+	TestDefer()
+
+	// defer func() {
+	// 	fmt.Println("1")
+	// 	fmt.Println("2")
+	// 	fmt.Println("3")
+	// }()
+
+	RunDefer()
+
+	file, err := os.Create("test.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer file.Close()
+
+	file.Write([]byte("Hello"))
+
+	//goroutin
+	// go sub()
+
+	// for {
+	// 	fmt.Println("Main Loop")
+	// 	time.Sleep(200 * time.Millisecond)
+	// }
 }
