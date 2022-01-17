@@ -110,4 +110,63 @@ func main() {
 	}
 	close(ch7)
 	time.Sleep(3 * time.Second)
+
+	ch8 := make(chan int, 3)
+	ch8 <- 1
+	ch8 <- 2
+	ch8 <- 3
+	close(ch8)
+	for k := range ch8 {
+		fmt.Println(k)
+	}
+
+	ch9 := make(chan int, 3)
+	ch10 := make(chan string, 3)
+
+	ch10 <- "A"
+	ch9 <- 1
+	ch10 <- "B"
+	ch9 <- 2
+
+	select {
+	case v1 := <-ch9:
+		fmt.Println(v1 + 1000)
+	case v2 := <-ch10:
+		fmt.Println(v2 + "!?")
+	default:
+		fmt.Println("どちらでもない")
+	}
+
+	ch11 := make(chan int)
+	ch12 := make(chan int)
+	ch13 := make(chan int)
+
+	go func() {
+		for {
+			i6 := <-ch11
+			ch12 <- i6 * 2
+		}
+	}()
+
+	go func() {
+		for {
+			i7 := <-ch12
+			ch13 <- i7 - 1
+		}
+	}()
+
+	n := 0
+L:
+	for {
+		select {
+		case ch11 <- n:
+			n++
+		case i8 := <-ch13:
+			fmt.Println("recieved", i8)
+		default:
+			if n > 100 {
+				break L
+			}
+		}
+	}
 }
