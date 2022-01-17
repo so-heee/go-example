@@ -12,6 +12,17 @@ func reciever(c chan int) {
 	}
 }
 
+func reciever2(name string, c chan int) {
+	for {
+		i, ok := <-c
+		if !ok {
+			break
+		}
+		fmt.Println(name, i)
+	}
+	fmt.Println(name + "END")
+}
+
 func main() {
 	// channel
 	// 複数のゴルーチン間でのデータの受け渡しをするために設計されたデータ構造
@@ -73,4 +84,30 @@ func main() {
 		time.Sleep(50 * time.Millisecond)
 		i3++
 	}
+
+	ch6 := make(chan int, 2)
+
+	// close前にチャネルに値がある場合は受信することができる
+	// ch6 <- 1
+
+	close(ch6)
+
+	// ch6 <- 1
+
+	i4, ok := <-ch6
+	fmt.Println(i4, ok)
+
+	ch7 := make(chan int, 2)
+
+	go reciever2("1.goroutin", ch7)
+	go reciever2("2.goroutin", ch7)
+	go reciever2("3.goroutin", ch7)
+
+	i5 := 0
+	for i5 < 100 {
+		ch7 <- i5
+		i5++
+	}
+	close(ch7)
+	time.Sleep(3 * time.Second)
 }
