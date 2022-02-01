@@ -8,7 +8,7 @@ import (
 
 func Rand() {
 
-	// 擬似乱数生成のパッケージ
+	// https://pkg.go.dev/crypto/rand@go1.17.6
 
 	// 固定値を設定すると何度やっても同じ値になる
 	rand.Seed(256)

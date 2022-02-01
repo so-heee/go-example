@@ -7,6 +7,9 @@ import (
 
 // Time.
 func Time() {
+
+	// https://pkg.go.dev/time@go1.17.6
+
 	// 今の時間
 	t := time.Now()
 	fmt.Println(t)

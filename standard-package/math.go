@@ -6,6 +6,9 @@ import (
 )
 
 func Math() {
+
+	// https://pkg.go.dev/math@go1.17.6
+
 	// 数学的な定数
 	// 円周率
 	fmt.Println(math.Pi)
