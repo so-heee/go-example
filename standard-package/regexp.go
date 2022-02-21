@@ -110,4 +110,46 @@ func RegexpFlag() {
 	fmt.Println(re9.MatchString("ABCXYZ"))
 	fmt.Println(re9.MatchString("ABCxyz"))
 	fmt.Println(re9.MatchString("ABCabc"))
+
+	// 正規表現のグループによるサブマッチ
+	// FindString
+	re10 := regexp.MustCompile((`(abc|ABC)|(xyz|XYZ)`))
+	fs1 := re10.FindString("AAAAABCXYZZZZ")
+	fmt.Println(fs1)
+	fs2 := re10.FindAllString("ABCXYZABCXYZ", -1)
+	fmt.Println(fs2)
+
+	// 正規表現のグループによるサブマッチ
+	// FindAllStringSubmatch
+	re11 := regexp.MustCompile(`(\d+)-(\d+)-(\d+)`)
+	s := `
+        0123-456-7889
+        111-222-333
+        556-787-899
+    `
+	ms := re11.FindAllStringSubmatch(s, -1)
+	fmt.Println(ms)
+	for _, v := range ms {
+		fmt.Println(v)
+	}
+
+	// 正規表現による文字列の置換
+	// 正規表現にマッチした部分を別の文字列に置き換える。
+	// regexp.Regexp型メソッドReplaceAllString
+	// 対象の文字列に正規表現のパターンにマッチする部分がない場合は、元の文字列がそのまま返される。
+	// スペースを,に置き換える
+	re12 := regexp.MustCompile(`\s+`)
+	fmt.Println(re12.ReplaceAllString("AAA BBB CCC", ","))
+
+	re13 := regexp.MustCompile(`、|。`)
+	fmt.Println(re13.ReplaceAllString("私は、Golangを使用する、プログラマー。", ""))
+
+	// 正規表現による文字列の分割
+	// 正規表現にマッチした部分で文字列を分割する場合は、regexp.Regexp型のメソッドSplitを使う
+	// 第二引数　分割する最大数を指定。-1でマッチした全ての箇所で分割する。[]str
+	re14 := regexp.MustCompile((`(abc|ABC)(xyz|XYZ)`))
+	fmt.Println(re14.Split("ASHVJV<HABCXYZKNJBJVKABCXYZ", -1))
+	re15 := regexp.MustCompile(`\s+`)
+	fmt.Println(re15.Split("aaaaaaaaaaaa                   bbbbbbb        cccc", -1))
+
 }
