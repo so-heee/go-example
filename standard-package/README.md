@@ -16,3 +16,4 @@ https://pkg.go.dev/std
 - regexp    [正規表現]
 - sync      [同期処理]
 - crypto    [暗号化]
+- json      [json]
