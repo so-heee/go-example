@@ -14,3 +14,4 @@ https://pkg.go.dev/std
 - bufio     [バッファ付き I/O]
 - ioutil    [1.16から非推奨になった]
 - regexp    [正規表現]
+- sync      [同期処理]
