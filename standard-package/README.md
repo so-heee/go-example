@@ -15,3 +15,4 @@ https://pkg.go.dev/std
 - ioutil    [1.16から非推奨になった]
 - regexp    [正規表現]
 - sync      [同期処理]
+- crypto    [暗号化]
