@@ -17,3 +17,4 @@ https://pkg.go.dev/std
 - sync      [同期処理]
 - crypto    [暗号化]
 - json      [json]
+- sort      [ソート]
