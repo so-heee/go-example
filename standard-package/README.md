@@ -18,3 +18,4 @@ https://pkg.go.dev/std
 - crypto    [暗号化]
 - json      [json]
 - sort      [ソート]
+- context   [処理の締め切り・キャンセル信号]
