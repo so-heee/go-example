@@ -15,8 +15,8 @@ limitations under the License.
 */
 package main
 
-import "github.com/so-heee/golang-example/cmdline-cobra/cmd"
+import "github.com/so-heee/go-example/thirdparty-package/cobra/cmd"
 
 func main() {
-  cmd.Execute()
+	cmd.Execute()
 }
