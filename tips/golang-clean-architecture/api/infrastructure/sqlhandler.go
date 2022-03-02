@@ -3,8 +3,7 @@ package infrastructure
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-
-	"github.com/so-heee/golang-example/golang-clean-architecture/api/interfaces/database"
+	"github.com/so-heee/go-example/tips/golang-clean-architecture/api/interfaces/database"
 )
 
 type SqlHandler struct {

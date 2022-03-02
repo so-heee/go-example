@@ -1,6 +1,6 @@
 package usecase
 
-import "github.com/so-heee/golang-example/golang-clean-architecture/api/domain"
+import "github.com/so-heee/golang-example/tips/golang-clean-architecture/api/domain"
 
 type UserInteractor struct {
 	UserRepository UserRepository

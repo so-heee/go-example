@@ -4,9 +4,9 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo"
-	"github.com/so-heee/golang-example/golang-clean-architecture/api/domain"
-	"github.com/so-heee/golang-example/golang-clean-architecture/api/interfaces/database"
-	"github.com/so-heee/golang-example/golang-clean-architecture/api/usecase"
+	"github.com/so-heee/go-example/tips/golang-clean-architecture/api/domain"
+	"github.com/so-heee/go-example/tips/golang-clean-architecture/api/interfaces/database"
+	"github.com/so-heee/go-example/tips/golang-clean-architecture/api/usecase"
 )
 
 type UserController struct {

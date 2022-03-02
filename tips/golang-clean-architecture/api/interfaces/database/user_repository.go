@@ -1,8 +1,6 @@
 package database
 
-import (
-	"github.com/so-heee/golang-example/golang-clean-architecture/api/domain"
-)
+import "github.com/so-heee/go-example/tips/golang-clean-architecture/api/domain"
 
 type UserRepository struct {
 	SqlHandler
@@ -38,8 +36,8 @@ func (repo *UserRepository) Update(u domain.User) (user domain.User, err error) 
 	return
 }
 
-func (repo *UserRepository) DeleteById(user domain.User) (err error) {
-	if err = repo.Delete(&user).Error; err != nil {
+func (repo *UserRepository) DeleteById(u domain.User) (err error) {
+	if err = repo.Delete(&u).Error; err != nil {
 		return
 	}
 	return

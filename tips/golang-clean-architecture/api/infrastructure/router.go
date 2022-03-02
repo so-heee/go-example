@@ -3,7 +3,8 @@ package infrastructure
 import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/so-heee/golang-example/golang-clean-architecture/api/interfaces/controllers"
+
+	"github.com/so-heee/go-example/tips/golang-clean-architecture/api/interfaces/controllers"
 )
 
 func Init() {
