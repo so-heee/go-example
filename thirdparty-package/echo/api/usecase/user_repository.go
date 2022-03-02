@@ -1,6 +1,6 @@
 package usecase
 
-import "github.com/so-heee/echo/api/domain"
+import "github.com/so-heee/go-example/thirdparty-package/echo/api/domain"
 
 type UserRepository interface {
 	FindById(id int) (domain.User, error)
