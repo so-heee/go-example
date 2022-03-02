@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
-	models "github.com/so-heee/go-example/sqlboiler/models"
+	models "github.com/so-heee/go-example/thirdparty-package/sqlboiler/models"
 	. "github.com/volatiletech/sqlboiler/v4/queries/qm"
 )
 
