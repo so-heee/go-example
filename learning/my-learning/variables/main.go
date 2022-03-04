@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // グローバル変数
-var I = 100
+var i8 = 100
 
 func main() {
 
@@ -45,5 +45,7 @@ func main() {
 - bool型: false
 - string型: "" (空文字列( empty string ))
 - その他: nil
+
+
 
 */
